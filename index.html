@@ -516,15 +516,26 @@
         }
         nav .nav-links a:hover::after { width: 100%; }
         nav .nav-cta {
-            background: var(--accent-gradient);
-            color: #fff !important; padding: 8px 20px; border-radius: 24px;
-            font-weight: 600; font-size: 0.85rem !important;
-            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, #002b5c 0%, #003d80 30%, #1a5fdc 100%);
+            color: #fff !important; padding: 10px 24px; border-radius: 24px;
+            font-weight: 600; font-size: 0.88rem !important;
+            box-shadow: 0 4px 20px rgba(26, 95, 220, 0.35);
+            letter-spacing: 0.03em;
+            position: relative;
+            overflow: hidden;
         }
-        nav .nav-cta:hover { box-shadow: 0 6px 24px rgba(59, 130, 246, 0.5); transform: translateY(-1px); }
-        nav .nav-cta::after { display: none; }
+        nav .nav-cta::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        nav .nav-cta:hover {
+            box-shadow: 0 6px 30px rgba(26, 95, 220, 0.55);
+            transform: translateY(-1px);
+        }
 
-        /* 移动端汉堡菜单 */
+        /* 移动端汉堡菜单（桌面端隐藏） */
         .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 101; }
         .menu-toggle span { width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: var(--transition); }
         .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -560,7 +571,7 @@
 
         /* ===== Hero 区 ===== */
         .hero {
-            padding-top: 160px; padding-bottom: 100px; text-align: center;
+            padding-top: 180px; padding-bottom: 100px; text-align: center;
             position: relative; z-index: 1;
         }
         .hero::before {
@@ -1404,8 +1415,8 @@
                 以下是酒店投资人与加盟商在咨询装修时最高频提出的问题。如有更多疑问，欢迎直接致电 <a href="tel:18601909855" style="color:var(--accent);">18601909855</a>。
             </p>
             <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">万华普罗米公司靠谱吗？装修质量怎么样？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1415,8 +1426,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">酒店装修能按时完工吗？工期可以比传统装修快多少？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1426,8 +1437,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">劳务工人是自己的还是临时找的？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1437,8 +1448,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">装修材料环保吗？新装房间能马上营业吗？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1448,8 +1459,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">万华普罗米的金融方案是怎么回事？能覆盖多少工程款？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1459,8 +1470,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">装配式装修多少钱一平米？你们的报价包含哪些？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1470,8 +1481,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">申请金融方案需要什么条件？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1481,8 +1492,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">你们服务外地客户吗？能覆盖全国吗？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1492,8 +1503,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">装配式材料和传统装修比，环保怎么样？甲醛达标吗？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1503,8 +1514,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">完工后的质保怎么做的？出现问题多久能响应？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1514,8 +1525,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">万华普罗米做过哪些酒店品牌？有什么合作伙伴？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1525,8 +1536,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item open">
+                    <button class="faq-question" aria-expanded="true">
                         <span class="faq-q-text">装配式装修后期维修方便吗？更换材料麻烦吗？</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -1600,11 +1611,11 @@
             btn.addEventListener('click', function() {
                 var item = this.parentElement;
                 var isOpen = item.classList.contains('open');
-                // 关闭所有
-                document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('open'); });
-                document.querySelectorAll('.faq-question').forEach(function(el) { el.setAttribute('aria-expanded', 'false'); });
-                // 切换当前
-                if (!isOpen) {
+                // 切换当前项（不关闭其他项）
+                if (isOpen) {
+                    item.classList.remove('open');
+                    this.setAttribute('aria-expanded', 'false');
+                } else {
                     item.classList.add('open');
                     this.setAttribute('aria-expanded', 'true');
                 }
