@@ -536,6 +536,52 @@
             line-height: 1.7;
         }
 
+        /* ===== 文章资讯 ===== */
+        .articles-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+            margin-bottom: 48px;
+        }
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none; color: inherit;
+            display: flex; flex-direction: column;
+        }
+        .article-card:hover {
+            border-color: var(--accent); transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .article-card .article-date {
+            font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px;
+        }
+        .article-card h3 {
+            font-size: 1.05rem; font-weight: 700; color: var(--text-primary);
+            margin-bottom: 10px; line-height: 1.5;
+            flex: 1;
+        }
+        .article-card .article-excerpt {
+            font-size: 0.88rem; color: var(--text-secondary);
+            line-height: 1.65; margin-bottom: 14px;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+            line-clamp: 3; overflow: hidden;
+        }
+        .article-card .article-source {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.78rem; color: #07C160; font-weight: 600;
+        }
+        .article-card .article-source svg { flex-shrink: 0; }
+        .article-empty {
+            grid-column: 1 / -1;
+            text-align: center; padding: 48px 24px;
+            background: var(--bg-card); border: 2px dashed var(--border);
+            border-radius: var(--radius-lg);
+        }
+        .article-empty .empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .article-empty p { color: var(--text-secondary); font-size: 0.95rem; }
+
         /* ===== 页脚 ===== */
         footer {
             background: var(--accent); padding: 48px 0 32px;
@@ -574,6 +620,7 @@
             .advantages-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .cases-grid { grid-template-columns: 1fr; }
+            .articles-grid { grid-template-columns: 1fr; }
             .compare-table-wrapper { padding: 20px; }
 
             .menu-toggle { display: flex; }
@@ -608,6 +655,7 @@
                 <li><a href="#advantages">核心优势</a></li>
                 <li><a href="#services">服务介绍</a></li>
                 <li><a href="#cases">客户案例</a></li>
+                <li><a href="#articles">文章资讯</a></li>
                 <li><a href="#faq">常见问题</a></li>
                 <li><a href="#contact" class="nav-cta">📞 18601909855</a></li>
             </ul>
@@ -818,6 +866,107 @@
                     <p class="case-item"><strong>交付成果：</strong>成功盘活前期现金流，自营劳务工人高效进场，项目按品牌方标准一次性验收通过。</p>
                     <div class="case-highlight">🏆 用金融方案为投资人盘活 200 万级资金缺口</div>
                 </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 文章资讯 ===== -->
+    <section id="articles" style="background: var(--bg-secondary);">
+        <div class="container">
+            <span class="section-label">文章资讯</span>
+            <h2 class="section-title">公众号精选文章</h2>
+            <p class="section-desc">
+                关注<strong>万华普罗米微信公众号（WHpromix）</strong>，获取酒店装修干货、行业趋势与装配式工艺深度解读。扫码关注，不错过每一次更新。
+            </p>
+            <div class="articles-grid" id="articlesGrid">
+                <a href="https://mp.weixin.qq.com/s/37ZqoEFwnbcRK2IQg-sXog" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">国际交流</span>
+                    <h3>韩国HRM投资开发株式会社领导到访参观交流</h3>
+                    <p class="article-excerpt">韩国HRM投资开发株式会社领导一行到访万华普罗米参观交流，深入了解装配式装修工艺体系，探讨跨国合作新机遇。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/d3C2MLGeAuFy_qa8l6FSrw" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">2026 荣誉</span>
+                    <h3>万华普罗米荣登迈点采购指数MPI（酒店版）榜单</h3>
+                    <p class="article-excerpt">迈点MPI酒店采购盛典落幕，万华普罗米凭借卓越的产品力与行业口碑，荣登迈点采购指数MPI（酒店版）榜单，行业影响力再获权威认可。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/QC_YJzR_E8x4tOuGgq2VxA" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">2026 临沂</span>
+                    <h3>万华普罗米受邀出席 2026临沂产城融合高质量发展大会并发表主题演讲</h3>
+                    <p class="article-excerpt">万华普罗米作为装配式装修领域代表企业，受邀出席大会并发表主题演讲，分享酒店装配式装修在产城融合中的创新实践与经验。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/acaNQPSMZTrWDCNoW4h0xA" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">校企合作</span>
+                    <h3>校企联动 共筑未来 | 内蒙古工业大学师生走进万华普罗米平各庄项目参观学习</h3>
+                    <p class="article-excerpt">内蒙古工业大学师生一行走进万华普罗米平各庄项目现场，实地观摩装配式装修工艺，深化校企合作，共筑行业人才培养新未来。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/AD173gl1ZRB3AGrbwoswQQ" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">2026 莫干山</span>
+                    <h3>万华普罗米受邀参加2026世界品牌莫干山大会</h3>
+                    <p class="article-excerpt">万华普罗米亮相2026世界品牌莫干山大会，与全球品牌共话装配式装修赛道新机遇，彰显中国酒店装修品牌创新力量。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/qxFl0-BAXmZ2tv-YlXC88g" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">设计大赛</span>
+                    <h3>万华普罗米受邀参加第七届H·Design国际酒店设计大赛</h3>
+                    <p class="article-excerpt">万华普罗米受邀参与第七届H·Design国际酒店设计大赛，以装配式工艺视角助力酒店设计创新，推动设计与施工的深度融合。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/WG74UTdQxuRRNZIcYro02A" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">银发经济</span>
+                    <h3>万华普罗米受邀参加全球银发经济安全健康产业发展峰会</h3>
+                    <p class="article-excerpt">万华普罗米受邀出席全球银发经济安全健康产业发展峰会，探讨装配式装修在康养酒店、银发公寓等适老化场景中的应用前景。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/znrE_W5XQbR6zZnt4O_JLA" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">企业荣誉</span>
+                    <h3>万华普罗米再获业主认可</h3>
+                    <p class="article-excerpt">万华普罗米凭借优质的施工交付与全流程服务能力，再次获得酒店业主方的高度认可与书面表扬，口碑实力再添新证。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+                <a href="https://mp.weixin.qq.com/s/LR1UupiBvJMrsCHwaN7bSg" class="article-card" target="_blank" rel="noopener">
+                    <span class="article-date">2025 荣誉</span>
+                    <h3>万华普罗米成功入选央广财经2025年度"金顶"优秀案例</h3>
+                    <p class="article-excerpt">万华普罗米凭借装配式酒店装修技术创新与行业影响力，成功入选央广财经2025年度"金顶"优秀案例，品牌公信力再上新台阶。</p>
+                    <span class="article-source">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#07C160"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z" fill-rule="evenodd"/></svg>
+                        微信公众号
+                    </span>
+                </a>
+            </div>
+
+            <!-- 关注引导条 -->
+            <div style="text-align:center;margin-top:20px;">
+                <a href="#contact" class="btn btn-outline" style="font-size:0.9rem;">
+                    💬 关注公众号，获取更多酒店装修干货
+                </a>
             </div>
         </div>
     </section>
