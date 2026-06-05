@@ -462,6 +462,80 @@
         .faq-item.open .faq-answer { max-height: 300px; }
         .faq-answer-inner { padding: 0 28px 22px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; }
 
+        /* ===== 右侧悬浮微信按钮 ===== */
+        .wechat-float {
+            position: fixed; right: 24px; bottom: 120px; z-index: 200;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .wechat-float-btn {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: #07C160;
+            border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(7, 193, 96, 0.4);
+            transition: var(--transition);
+            position: relative;
+        }
+        .wechat-float-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 28px rgba(7, 193, 96, 0.55);
+        }
+        .wechat-float-btn::after {
+            content: '';
+            position: absolute; inset: -4px; border-radius: 50%;
+            border: 2px solid rgba(7, 193, 96, 0.25);
+            animation: wechat-pulse 2s ease-in-out infinite;
+        }
+        @keyframes wechat-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.12); opacity: 0.4; }
+        }
+        .wechat-popup {
+            position: absolute; right: 68px; bottom: 0;
+            width: 260px;
+            background: #fff; border-radius: var(--radius-lg);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+            opacity: 0; visibility: hidden;
+            transform: translateX(8px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .wechat-popup.show {
+            opacity: 1; visibility: visible;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+        .wechat-popup-header {
+            background: #f0fdf4; padding: 16px 20px;
+            display: flex; align-items: center; gap: 10px;
+            border-bottom: 1px solid #dcfce7;
+        }
+        .wechat-popup-header span {
+            font-weight: 700; font-size: 0.95rem; color: var(--text-primary);
+        }
+        .wechat-popup-body {
+            padding: 20px;
+            text-align: center;
+        }
+        .wechat-id-label {
+            font-size: 0.78rem; color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .wechat-id {
+            font-size: 1.05rem; font-weight: 700; color: var(--text-primary);
+            margin-bottom: 14px; letter-spacing: 0.02em;
+        }
+        .wechat-qrcode {
+            width: 160px; height: 160px; border-radius: 8px;
+            display: block; margin: 0 auto 14px;
+            border: 1px solid var(--border);
+        }
+        .wechat-tip {
+            font-size: 0.82rem; color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
         /* ===== 页脚 ===== */
         footer {
             background: var(--accent); padding: 48px 0 32px;
@@ -816,7 +890,28 @@
         </div>
     </section>
 
-    <!-- ===== 联系页脚 ===== -->
+    <!-- ===== 右侧悬浮微信关注按钮 ===== -->
+    <div class="wechat-float" id="wechatFloat">
+        <button class="wechat-float-btn" id="wechatBtn" aria-label="关注微信公众号">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-3.905 0-6.958 3.072-6.958 6.716 0 3.643 3.053 6.716 6.958 6.716.86 0 1.733-.183 2.512-.517.13-.06.28-.083.41-.047l1.883 1.1c.06.03.13.054.201.054.176 0 .318-.145.318-.327 0-.073-.03-.141-.059-.21l-.414-1.551a.636.636 0 0 1 .253-.712c1.758-1.318 2.878-3.118 2.878-5.173 0-3.643-3.112-6.716-7.016-6.716h-.047zm-2.637 3.527c.47 0 .85.396.85.883a.867.867 0 0 1-.85.884.867.867 0 0 1-.85-.884c0-.487.38-.883.85-.883zm4.805 0c.47 0 .85.396.85.883a.867.867 0 0 1-.85.884.867.867 0 0 1-.85-.884c0-.487.38-.883.85-.883zm-2.493 4.579c-.47 0-.85-.396-.85-.884a.867.867 0 0 1 .85-.883c.47 0 .85.396.85.883 0 .488-.38.884-.85.884zm2.23 0c-.47 0-.85-.396-.85-.884a.867.867 0 0 1 .85-.883c.47 0 .85.396.85.883 0 .488-.38.884-.85.884z" fill-rule="evenodd"/>
+            </svg>
+        </button>
+        <div class="wechat-popup" id="wechatPopup">
+            <div class="wechat-popup-header">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#07C160">
+                    <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-3.905 0-6.958 3.072-6.958 6.716 0 3.643 3.053 6.716 6.958 6.716.86 0 1.733-.183 2.512-.517.13-.06.28-.083.41-.047l1.883 1.1c.06.03.13.054.201.054.176 0 .318-.145.318-.327 0-.073-.03-.141-.059-.21l-.414-1.551a.636.636 0 0 1 .253-.712c1.758-1.318 2.878-3.118 2.878-5.173 0-3.643-3.112-6.716-7.016-6.716h-.047zm-2.637 3.527c.47 0 .85.396.85.883a.867.867 0 0 1-.85.884.867.867 0 0 1-.85-.884c0-.487.38-.883.85-.883zm4.805 0c.47 0 .85.396.85.883a.867.867 0 0 1-.85.884.867.867 0 0 1-.85-.884c0-.487.38-.883.85-.883zm-2.493 4.579c-.47 0-.85-.396-.85-.884a.867.867 0 0 1 .85-.883c.47 0 .85.396.85.883 0 .488-.38.884-.85.884zm2.23 0c-.47 0-.85-.396-.85-.884a.867.867 0 0 1 .85-.883c.47 0 .85.396.85.883 0 .488-.38.884-.85.884z" fill-rule="evenodd"/>
+                </svg>
+                <span>万华普罗米</span>
+            </div>
+            <div class="wechat-popup-body">
+                <p class="wechat-id-label">微信号</p>
+                <p class="wechat-id">WHpromix</p>
+                <img src="万华普罗米公众号二维码.png" alt="万华普罗米公众号二维码" class="wechat-qrcode" loading="lazy">
+                <p class="wechat-tip">打开微信 → 搜索上方微信号<br>或扫一扫二维码关注</p>
+            </div>
+        </div>
+    </div>
     <footer id="contact">
         <div class="footer-inner">
             <div class="footer-brand">
@@ -863,6 +958,20 @@
                     this.setAttribute('aria-expanded', 'true');
                 }
             });
+        });
+
+        // 微信悬浮按钮弹窗
+        var wechatBtn = document.getElementById('wechatBtn');
+        var wechatPopup = document.getElementById('wechatPopup');
+        wechatBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            wechatPopup.classList.toggle('show');
+        });
+        // 点击页面其他地方关闭弹窗
+        document.addEventListener('click', function(e) {
+            if (!wechatPopup.contains(e.target) && e.target !== wechatBtn) {
+                wechatPopup.classList.remove('show');
+            }
         });
 
         // 平滑滚动（兼容旧浏览器）
